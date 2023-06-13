@@ -1,0 +1,44 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="{% static 'goods_list\js\scripts.js' %}"></script>
+</head>
+<body>
+    <header class="p-3 bg-dark text-white fixed-top">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            {% block nav %}
+            {% endblock %}
+        </ul>
+      </div>
+    </div>
+    </header>
+
+    <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a class="nav-link px-2" style="color:rgb(33, 37, 41);">Каталог товаров</a></li>
+            <li><a class="nav-link px-2" style="color:rgb(33, 37, 41);">Акционные предложения</a></li>
+        </ul>
+      </div>
+    </div>
+
+    </header>
+    </div>
+    <div class="container">
+        {% block category %}{% endblock %}
+    </div>
+    <div class="container">
+        {% block list %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'goods_list/base.html' %}
+{% load static %}
+
+{% block nav %}
+<li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">Каталог товаров</a></li>
+<li><a href="{% url 'promo' %}" class="nav-link px-2 text-white">Акционные предложения</a></li>
+{% endblock %}
+
+{% block title%}
+{{ title }}
+{% endblock %}
+
+{% block category %}
+<nav class="navbar navbar-expand-sm navbar-white bg-white">
+      <a class="navbar-brand">Выбери категорию:</a>
+      <button onclick="myFunction()" class="dropbtn navbar-toggler-icon navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="true" aria-label="Toggle navigation">
+      </button>
+
+      <div id="myDropdown" class="dropdown-content navbar-collapse collapse" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" style="{{list_selections.0}}" href="{% url 'home' %}">Все товары</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="{{list_selections.1}}" href="{% url list_pages.0 %}">{{categories_names.0.category_name}}</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" style="{{list_selections.2}}" href="{% url list_pages.1 %}">{{categories_names.1.category_name}}</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" style="{{list_selections.3}}" href="{% url list_pages.2 %}">{{categories_names.2.category_name}}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+{% endblock %}
+
+{% block list %}
+{% for item in goods_list %}
+    <div class="row p-2 bg-white border rounded" style="margin: 5px">
+                <div class="col-md-3 mt-1">
+                    <img class="img-fluid img-responsive rounded product-image"
+                                                src="{% static item.photo_url %}">
+                </div>
+                <div class="col-md-6 mt-1" style="margin:0;width: 520px;">
+                    <h5>{{item.name}}</h5>
+                    <h4 class="mr-1">{{item.price}} ₽</h4>
+                    <p class="text-justify para mb-0">{{item.description}}<br><br></p>
+                </div>
+    </div>
+{% endfor %}
+{% endblock %}
